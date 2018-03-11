@@ -1,0 +1,7 @@
+setwd("~/GitHub/ExData_Plotting1")
+HPC <- read.csv("household_power_consumption.txt", header = TRUE, sep = ";", na.strings = "?")
+HPC$Date <- as.Date(HPC$Date, "%d/%m/%Y")
+HPC1 <- subset(HPC, subset = (Date >= "2007-02-01" & Date <= "2007-02-02"))
+with(HPC1, hist(Global_active_power, main = "Global Active Power",xlab = "Global Active Power (kilowatts)", col = "red"))
+dev.copy(png, file = "plot1.png", height = 480, width = 480)
+dev.off()
